@@ -25,6 +25,7 @@ public class BookingResponse {
         this.status = status;
     }
 
+    // I would have used annotations instead of these getters and setters
     public String getBookingId() { return bookingId; }
     public String getFlightNumber() { return flightNumber; }
     public String getPassengerName() { return passengerName; }

@@ -9,6 +9,7 @@ public class CreateFlightRequest {
     @Pattern(regexp = "^[A-Z]{2}\\d{3,4}$", message = "Flight number must match pattern e.g. AA123")
     private String flightNumber;
 
+    // origin and destination can be enums as all cities can be mapped as enums for better maintainence
     @NotBlank(message = "Origin is required")
     private String origin;
 

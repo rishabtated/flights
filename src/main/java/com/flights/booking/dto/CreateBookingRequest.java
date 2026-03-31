@@ -15,6 +15,7 @@ public class CreateBookingRequest {
     @Max(value = 9, message = "Cannot book more than 9 seats at once")
     private int seats;
 
+    // can take details of all passengers who are travelling
     public String getPassengerName() { return passengerName; }
     public void setPassengerName(String passengerName) { this.passengerName = passengerName; }
 
