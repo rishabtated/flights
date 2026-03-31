@@ -42,8 +42,7 @@ public class BookingService {
     }
 
     public void cancelBooking(String flightNumber, String bookingId) {
-        // Ensure the flight exists
-        flightService.getFlightOrThrow(flightNumber);
+        Flight flight = flightService.getFlightOrThrow(flightNumber);
 
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(() -> new BookingNotFoundException(bookingId));
@@ -57,9 +56,6 @@ public class BookingService {
         }
 
         booking.cancel();
-
-        // Release seats back to the flight
-        Flight flight = flightService.getFlightOrThrow(flightNumber);
         flight.releaseSeats(booking.getSeats());
     }
 

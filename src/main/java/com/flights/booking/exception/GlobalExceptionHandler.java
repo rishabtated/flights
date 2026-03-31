@@ -54,6 +54,9 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGeneric(Exception ex) {
+        // Log the exception so we don't lose the actual stack trace for unknown errors
+        System.err.println("Unhandled Exception caught: ");
+        ex.printStackTrace();
         return errorResponse(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred");
     }
 

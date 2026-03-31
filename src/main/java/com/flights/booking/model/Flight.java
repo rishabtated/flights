@@ -44,6 +44,7 @@ public class Flight {
      * Releases seats back to the flight (e.g., on cancellation).
      */
     public synchronized void releaseSeats(int count) {
+        if (count <= 0) return;
         availableSeats = Math.min(totalSeats, availableSeats + count);
     }
 }
