@@ -10,6 +10,8 @@ import java.util.concurrent.ConcurrentHashMap;
 @Repository
 public class FlightRepository {
 
+    // TODO: [Reviewer] Let's migrate this to Spring Data JPA and Postgres when we have more time.
+    // Fine for v1 MVP, but won't survive a server restart or multi-node deployment.
     private final ConcurrentHashMap<String, Flight> store = new ConcurrentHashMap<>();
 
     public Optional<Flight> findByFlightNumber(String flightNumber) {

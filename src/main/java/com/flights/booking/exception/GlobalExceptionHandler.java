@@ -60,6 +60,8 @@ public class GlobalExceptionHandler {
         return errorResponse(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred");
     }
 
+    // TODO: [Reviewer] Let's migrate away from this custom Map structure soon.
+    // Spring Boot 3 has native built-in support for RFC 7807 ProblemDetail that we should use instead.
     private ResponseEntity<Map<String, Object>> errorResponse(HttpStatus status, String message) {
         return ResponseEntity.status(status).body(Map.of(
                 "timestamp", LocalDateTime.now(),

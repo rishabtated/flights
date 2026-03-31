@@ -33,7 +33,11 @@ public class FlightController {
     /**
      * GET /api/v1/flights
      * List all registered flights.
+     * // TODO: [Reviewer] Let's implement Spring Data Pageable here next sprint.
+     * // Returning the entire array of flights will OOM our app when we hit 10k flights.
      */
+
+    //RISHAB LONG TERM - can implement pagination here
     @GetMapping
     public ResponseEntity<List<FlightResponse>> getAllFlights() {
         return ResponseEntity.ok(flightService.getAllFlights());

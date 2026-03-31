@@ -26,6 +26,8 @@ public class BookingService {
         Flight flight = flightService.getFlightOrThrow(flightNumber);
 
         // Atomic seat reservation — prevents overbooking
+        // TODO: [Reviewer] Using intrinsically synchronized methods works for a single instance MVP.
+        // We will need Redisson/Redis for distributed locks or DB pessimistic locking once we scale to >1 pods.
         boolean reserved = flight.reserveSeats(request.getSeats());
         if (!reserved) {
             throw new OverbookingException(flightNumber, request.getSeats(), flight.getAvailableSeats());
